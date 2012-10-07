@@ -5,8 +5,10 @@
   ; Source paths for Leiningen 2.x:
   :source-paths ["src/clj"]
   :dependencies [[org.clojure/clojure "1.4.0"]
-                 [compojure "1.0.4"]
+                 [noir "1.3.0-beta10"]
+                 [lib-noir "0.1.1"]
                  [hiccup "1.0.0"]
+                 [tentacles "0.2.2"]
                  [jayq "0.1.0-alpha3"]]
   :dev-dependencies [[lein-ring "0.7.0"]]
   :plugins [[lein-cljsbuild "0.2.7"]
@@ -17,4 +19,5 @@
                          :optimizations :simple
                          :pretty-print true}}]}
   :ring {:handler fiddle.routes/app
-         :auto-refresh? true})
+         :auto-refresh? true}
+  :main fiddle.server)
