@@ -3,7 +3,7 @@
         [hiccup.form :only [form-to submit-button text-field]]) ; temp
   (:require  [fiddle.models.project :as projects]
              [noir.response :as response]
-             [fiddle.views.common :as common]))  ;temp
+             [fiddle.views.common :as common]))
 
 (defn resp
   ([content] (response/json content))
@@ -15,10 +15,6 @@
       (form-to {:class "form-inline"} [:post "/projects"]
         (text-field {:placeholder "http://"} :url)
         (submit-button {:class :btn} "Add project"))]))
-  ; (json (for
-  ;         [n (range 0 10)]
-  ;         {:name (str "Project " (inc n))
-  ;          :url "http://dummy.url.com"})))
 
 (defpage [:post "/projects"] {:keys [url]}
   (if-not url

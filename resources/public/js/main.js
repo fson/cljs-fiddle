@@ -12863,12 +12863,6 @@ fiddle.core.init_editor = function(a) {
   a.setTheme("ace/theme/solarized_light");
   return b.setMode("ace/mode/clojure")
 };
-fiddle.core.init_preview = function(a) {
-  return jayq.core.attr.call(null, a, "src", "/js/main.js")
-};
-jayq.core.$.call(null, document).ajaxError(cljs.core.partial.call(null, fiddle.util.log, "Error"));
 jayq.core.document_ready.call(null, function() {
-  fiddle.core.init_editor.call(null, jayq.core.$.call(null, ".editor"));
-  fiddle.core.init_preview.call(null, jayq.core.$.call(null, ".preview"));
-  return jayq.core.xhr.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'GET", "/"], !0), cljs.core.ObjMap.fromObject(["\ufdd0'message"], {"\ufdd0'message":"Hello"}), cljs.core.partial.call(null, fiddle.util.log, "Success"))
+  return fiddle.core.init_editor.call(null, jayq.core.$.call(null, ".editor"))
 });

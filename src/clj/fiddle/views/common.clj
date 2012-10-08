@@ -5,7 +5,7 @@
 (defpartial layout [scripts & content]
   (html5
     [:head
-      [:title "Hello World"]
+      [:title "cljsFiddle"]
       (include-css "/css/bootstrap.css")
       (include-css "/css/theme.css")
       (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js")
