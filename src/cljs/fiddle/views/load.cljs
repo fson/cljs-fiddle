@@ -4,9 +4,12 @@
         [crate.core :only [html]]
         [crate.form :only [text-field]]))
 
+(defn show-project [data]
+  data) ; TODO
+
 (defn create-project []
-  (let url (.val ($ "input[name='url']"))
-    (xhr [:post "/projects"] {:url url})))
+  (let [url (.val ($ "input[name='url']"))]
+    (xhr [:post "/projects"] {:url url} show-project)))
 
 (defmulti handler keyword)
 

@@ -15523,8 +15523,12 @@ crate.core.html = function() {
 crate.core.h = crate.util.escape_html;
 fiddle.views = {};
 fiddle.views.load = {};
+fiddle.views.load.show_project = function(a) {
+  return a
+};
 fiddle.views.load.create_project = function() {
-  return 2
+  var a = jayq.core.$.call(null, "input[name='url']").val();
+  return jayq.core.xhr.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0'post", "/projects"], !0), cljs.core.ObjMap.fromObject(["\ufdd0'url"], {"\ufdd0'url":a}), fiddle.views.load.show_project)
 };
 fiddle.views.load.handler = function() {
   var a = cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY), b = cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY), c = cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY), d = cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY), e = cljs.core._lookup.call(null, cljs.core.ObjMap.EMPTY, "\ufdd0'hierarchy", cljs.core.global_hierarchy);
