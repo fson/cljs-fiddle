@@ -1,7 +1,17 @@
 (ns fiddle.views.load
-  (:use [jayq.core :only [on bind data $ append]]
+  (:use [fiddle.util :only [react-on]]
+        [jayq.core :only [on bind data $ append xhr]]
         [crate.core :only [html]]
         [crate.form :only [text-field]]))
+
+(defn create-project []
+  (let url (.val ($ "input[name='url']"))
+    (xhr [:post "/projects"] {:url url})))
+
+(defmulti handler keyword)
+
+(defmethod handler :create [_]
+  (create-project))
 
 (defn modal []
   (html [:div.modal
@@ -17,7 +27,9 @@
           :url)]]
     [:div.modal-footer
       [:button.btn {:data-dismiss "modal"} "Cancel"]
-      [:button.btn.btn-primary "Load"]]]))
+      [:button.btn.btn-primary {:data-action "create"} "Load"]]]))
 
 (defn init-load []
-  (append ($ :body) (.modal ($ (modal)))))
+  (let [elem (.modal ($ (modal)))]
+    (react-on elem :click handler)
+    (append ($ :body) elem)))

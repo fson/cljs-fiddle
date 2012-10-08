@@ -1,15 +1,12 @@
 (ns fiddle.views.navigation
-  (:use [jayq.core :only [on bind data $]]
-        [fiddle.util :only [log]]
+  (:use [jayq.core :only [on $]]
+        [fiddle.util :only [log react-on]]
         [fiddle.views.load :only [init-load]]))
 
-(defmulti react-to keyword)
+(defmulti handler keyword)
 
-(defmethod react-to :load [_]
+(defmethod handler :load [_]
   (init-load))
 
 (defn init-navigation [elem]
-  (on elem :click "button[data-action]"
-    (fn [e]
-      (let [action (data ($ (.-currentTarget e)) :action)]
-        (react-to action)))))
+  (react-on elem :click handler))
