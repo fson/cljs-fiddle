@@ -1,5 +1,6 @@
 (ns fiddle.core
-  (:use [jayq.core :only [$ attr xhr]]])
+  (:use [jayq.core :only [$ attr xhr]]
+        [fiddle.views.navigation :only [init-navigation]])
   (:use-macros [jayq.macros :only [ready]]))
 
 (defn init-editor [elem]
@@ -9,4 +10,5 @@
     (.setMode session "ace/mode/clojure")))
 
 (ready
-  (init-editor ($ ".editor")))
+  (init-editor ($ ".editor"))
+  (init-navigation ($ ".navigation")))
