@@ -14,7 +14,7 @@
     [:ul.nav.nav-pills (seq (assoc-in li-elems [0 1 :class] "active"))]))
 
 (defpage "/" []
-  (common/layout
+  (common/layout ["/js/editor/ace.js" "/js/main.js"]
     [:div.left.column
       [:div.editor (example-source)]]
     [:div.right.column

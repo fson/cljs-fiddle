@@ -2,15 +2,14 @@
   (:use [noir.core :only [defpartial]]
         [hiccup.page :only [html5 include-css include-js]]))
 
-(defpartial layout [& content]
+(defpartial layout [scripts & content]
   (html5
     [:head
       [:title "Hello World"]
       (include-css "/css/bootstrap.css")
       (include-css "/css/theme.css")
       (include-js "//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js")
-      (include-js "/js/editor/ace.js")
-      (include-js "/js/main.js")]
+      (map include-js scripts)]
     [:body
       [:div.navbar.navbar-fixed-top
         [:div.navbar-inner
